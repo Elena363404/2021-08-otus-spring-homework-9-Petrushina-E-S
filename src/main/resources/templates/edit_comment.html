@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit person</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input:read-only {
+            background: lightgray;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Comment edition -->
+<form id="edit-form" th:action="@{/edit_comment(id=${comment.id})}" th:method="post" action="edit_comment.html">
+    <h1>Comment Info:</h1>
+
+    <div class="row" th:if="${comment.id} ne 0">
+        <label for="id-input">ID:</label>
+        <input id="id-input" type="number" readonly="readonly" th:value="${comment.id}"/>
+    </div>
+
+    <div class="row" th:if="${comment.id} eq 0">
+        <label for="book-id">ID book:</label>
+        <input id="book-id" type="number" min="0" name="bookId" th:value="${comment.bookId}"/>
+    </div>
+    <input id="book-id2" type="hidden" name="bookId" th:value="${comment.bookId}" th:if="${comment.id} ne 0"/>
+
+    <div class="row" th:if="${comment.id} ne 0">
+        <label for="book-name">Book:</label>
+        <input id="book-name" type="text" readonly="readonly" name="bookName" th:value="${comment.bookName}"/>
+    </div>
+
+    <div class="row">
+        <label for="comment-input">Comment:</label>
+        <input id="comment-input" name="comment" type="text" th:value="${comment.comment}"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Save</button>
+    </div>
+</form>
+
+</body>
+</html>

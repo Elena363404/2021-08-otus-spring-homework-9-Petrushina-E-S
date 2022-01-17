@@ -25,7 +25,7 @@
 <body>
 
 <!-- Comment edition -->
-<form id="edit-form" th:action="@{/edit_comment(id=${comment.id})}" th:method="post" action="edit_comment.html">
+<form id="edit-form" th:action="@{/edit_comment/{id}(id = ${comment.id})}" th:method="post" action="edit_comment.html">
     <h1>Comment Info:</h1>
 
     <div class="row" th:if="${comment.id} ne 0">
@@ -33,15 +33,14 @@
         <input id="id-input" type="number" readonly="readonly" th:value="${comment.id}"/>
     </div>
 
-    <div class="row" th:if="${comment.id} eq 0">
-        <label for="book-id">ID book:</label>
-        <input id="book-id" type="number" min="0" name="bookId" th:value="${comment.bookId}"/>
-    </div>
-    <input id="book-id2" type="hidden" name="bookId" th:value="${comment.bookId}" th:if="${comment.id} ne 0"/>
-
-    <div class="row" th:if="${comment.id} ne 0">
-        <label for="book-name">Book:</label>
-        <input id="book-name" type="text" readonly="readonly" name="bookName" th:value="${comment.bookName}"/>
+    <div class="row">
+        <label for="book-id">Book:</label>
+        <select id="book-id" name="bookId">
+            <option th:each="book: ${books}"
+                    th:text="${book.name}"
+                    th:value="${book.id}"
+                    th:selected="${comment.bookId} == ${book.id}"></option>
+        </select>
     </div>
 
     <div class="row">

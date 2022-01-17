@@ -25,7 +25,7 @@
 <body>
 
 <!-- Book edition -->
-<form id="edit-form" th:action="@{/edit_book(id=${book.id})}" th:method="post" action="edit_book.html">
+<form id="edit-form" th:action="@{/edit_book/{id}(id = ${book.id})}" th:method="post" action="edit_book.html">
 
     <h1>Book Info:</h1>
     <div class="row" th:if="${book.authorId} ne null">
@@ -39,22 +39,22 @@
     </div>
 
     <div class="row">
-        <label for="author-input">ID author:</label>
-        <input id="author-input" name="authorId" min="0" type="number" th:value="${book.authorId}"  th:onchange="'checkNullValue(this.value);'"/>
+        <label for="author-input">Author:</label>
+        <select id="author-input" name="authorId">
+            <option th:each="author: ${authors}"
+                    th:text="${author.name}"
+                    th:value="${author.id}"
+                    th:selected="${book.authorId} == ${author.id}"></option>
+        </select>
     </div>
-    <div class="row" th:if="${book.id} ne 0">
-        <label for="author-name">Author:</label>
-        <input id="author-name" name="authorName" type="text" readonly="readonly" th:value="${book.authorName}"/>
-    </div>
-
     <div class="row">
-        <label for="genre-input">ID genre:</label>
-        <input id="genre-input" name="genreId" min="0" type="number" th:value="${book.genreId}" th:onchange="'checkNullValue(this.value);'"/>
-    </div>
-
-    <div class="row" th:if="${book.id} ne 0">
-        <label for="genre-name">Genre:</label>
-        <input id="genre-name" name="genreName" type="text" readonly="readonly" th:value="${book.genreName}"/>
+        <label for="genre-input">Genre:</label>
+        <select id="genre-input" name="genreId">
+            <option th:each="genre: ${genres}"
+                    th:text="${genre.name}"
+                    th:value="${genre.id}"
+                    th:selected="${book.genreId} == ${genre.id}"></option>
+        </select>
     </div>
 
     <div class="row">

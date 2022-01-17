@@ -14,23 +14,23 @@ public class AuthorController {
   private final AuthorService authorService;
 
 
-  @GetMapping("/edit_author")
-  public String getAuthorById(@RequestParam("id") long id, Model model) {
+  @GetMapping("/edit_author/{id}")
+  public String getAuthorById(@PathVariable("id") long id, Model model) {
     Author author = authorService.getAuthorById(id);
 
     model.addAttribute("author", author);
     return "edit_author";
   }
 
-  @PostMapping("/edit_author")
+  @PostMapping("/edit_author/{id}")
   public String saveAuthor(Author author, Model model) {
     Author saved = authorService.saveAuthor(author);
     model.addAttribute(saved);
     return "redirect:/";
   }
 
-  @DeleteMapping("/delete_author")
-  public String deleteAuthor(@RequestParam("id") long id)  {
+  @DeleteMapping("/delete_author/{id}")
+  public String deleteAuthor(@PathVariable("id") long id)  {
     authorService.deleteAuthor(id);
     return "redirect:/";
   }

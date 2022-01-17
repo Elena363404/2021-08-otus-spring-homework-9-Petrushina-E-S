@@ -46,8 +46,16 @@ public class CommentDto {
     this.comment = comment;
   }
 
-  public static CommentDto toDto(Comment comment) {
+  public static CommentDto commentToCommentDto(Comment comment) {
     Book book = comment.getBook();
-    return new CommentDto(comment.getId(), comment.getComment(), book.getId(), book.getName());
+
+    CommentDto commentDto = new CommentDto(comment.getId(), comment.getComment(), book != null ? book.getId() : 0, book != null ? book.getName() : "");
+    return commentDto;
+  }
+
+  public static Comment commentDtoToComment(CommentDto commentDto) {
+    Comment comment = new Comment(commentDto.getId(), commentDto.getComment(), new Book(commentDto.getBookId(), commentDto.getBookName(), null, null));
+
+    return comment;
   }
 }

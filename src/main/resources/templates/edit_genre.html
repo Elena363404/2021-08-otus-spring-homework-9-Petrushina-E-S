@@ -25,7 +25,7 @@
 <body>
 
 <!-- Genre edition -->
-<form id="edit-form" th:action="@{/edit_genre(id=${genre.id})}" th:method="post" action="edit_genre.html">
+<form id="edit-form" th:action="@{/edit_genre/{id}(id = ${genre.id})}" th:method="post" action="edit_genre.html">
     <h1>Genre Info:</h1>
 
     <div class="row" th:if="${genre.id} ne 0">

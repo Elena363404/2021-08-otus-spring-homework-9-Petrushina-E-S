@@ -69,9 +69,20 @@ public class BookDto {
     return new Book(dto.getId(), dto.getName(), new Author(dto.getAuthorId(), dto.getAuthorName()), new Genre(dto.getGenreId(), dto.getGenreName()));
   }
 
-  public static BookDto toDto(Book book) {
+  public static BookDto bookToBookDto(Book book) {
     Author author = book.getAuthor();
     Genre genre = book.getGenre();
-    return new BookDto(book.getId(), book.getName(), author != null ? author.getId() : 0, author != null ? author.getName() : "", genre != null ? genre.getId() : 0, genre != null ? genre.getName() : "");
+
+    BookDto bookDto = new BookDto(book.getId(), book.getName(), author != null ? author.getId() : 0, author != null ? author.getName() : "", genre != null ? genre.getId() : 0, genre != null ? genre.getName() : "");
+
+    return bookDto;
+  }
+
+  public static Book bookDtoToBook(BookDto bookDto) {
+    long authorId = bookDto.getAuthorId();
+    long genreId = bookDto.getGenreId();
+    Book book = new Book(bookDto.getId(), bookDto.getName(), authorId == 0 ? null : new Author(authorId, bookDto.getAuthorName()), genreId == 0 ? null : new Genre(genreId, bookDto.getGenreName()));
+
+    return book;
   }
 }

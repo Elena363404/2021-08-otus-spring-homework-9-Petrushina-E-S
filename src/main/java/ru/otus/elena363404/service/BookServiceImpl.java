@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class BooksServiceImpl implements BookService {
+public class BookServiceImpl implements BookService {
 
   private final BookRepository bookRepository;
   private final CommentRepository commentRepository;

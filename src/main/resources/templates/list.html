@@ -72,7 +72,7 @@
     <div class="blok-1">
         <div class="blok-book">
             <h1>Books:</h1>
-            <a th:href="@{/edit_book(id=0)}" href="edit_book.html"><button class = "button btn_add">Add</button></a>
+            <a th:href="@{/edit_book/{id}(id = 0)}" href="edit_book.html"><button class = "button btn_add">Add</button></a>
             <table class="book">
                 <thead>
                 <tr>
@@ -90,8 +90,8 @@
                     <td th:text="${book.authorName}"/>
                     <td th:text="${book.genreName}"/>
                     <td>
-                        <a th:href="@{/edit_book(id=${book.id})}" href="edit_book.html"><button class = "button btn_edit">Edit</button></a>
-                        <button class = "button btn_delete" th:with="url = @{/delete_book(id=${book.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
+                        <a th:href="@{/edit_book/{id}(id = ${book.id})}" href="edit_book.html"><button class = "button btn_edit">Edit</button></a>
+                        <button class = "button btn_delete" th:with="url = @{/delete_book/{id}(id = ${book.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
                     </td>
                 </tr>
                 </tbody>
@@ -99,7 +99,7 @@
         </div>
         <div class="blok-comment">
             <h1>Comments:</h1>
-            <a th:href="@{/edit_comment(id=0)}" href="edit_comment.html"><button class = "button btn_add">Add</button></a>
+            <a th:href="@{/edit_comment/{id}(id = 0)}" href="edit_comment.html"><button class = "button btn_add">Add</button></a>
             <table class="comment">
                 <thead>
                 <tr>
@@ -115,8 +115,8 @@
                     <td th:text="${comment.comment}"/>
                     <td th:text="${comment.bookName}"/>
                     <td>
-                        <a th:href="@{/edit_comment(id=${comment.id})}" href="edit_comment.html"><button class = "button btn_edit">Edit</button></a>
-                        <button class = "button btn_delete" th:with="url = @{/delete_comment(id=${comment.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
+                        <a th:href="@{/edit_comment/{id}(id = ${comment.id})}" href="edit_comment.html"><button class = "button btn_edit">Edit</button></a>
+                        <button class = "button btn_delete" th:with="url = @{/delete_comment/{id}(id = ${comment.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
                     </td>
                 </tr>
                 </tbody>
@@ -127,7 +127,7 @@
     <div class="blok-2">
         <div class="blok-author">
             <h1>Authors:</h1>
-            <a th:href="@{/edit_author(id=0)}" href="edit_author.html"><button class = "button btn_add">Add</button></a>
+            <a th:href="@{/edit_author/{id}(id = 0)}" href="edit_author.html"><button class = "button btn_add">Add</button></a>
             <table class="author">
                 <thead>
                 <tr>
@@ -141,8 +141,8 @@
                     <td th:text="${author.id}"/>
                     <td th:text="${author.name}"/>
                     <td>
-                        <a th:href="@{/edit_author(id=${author.id})}" href="edit_author.html"><button class = "button btn_edit">Edit</button></a>
-                        <button class = "button btn_delete" th:with="url = @{/delete_author(id=${author.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
+                        <a th:href="@{/edit_author/{id}(id = ${author.id})}" href="edit_author.html"><button class = "button btn_edit">Edit</button></a>
+                        <button class = "button btn_delete" th:with="url = @{/delete_author/{id}(id = ${author.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
                     </td>
                 </tr>
                 </tbody>
@@ -151,7 +151,7 @@
 
         <div class="blok-genre">
             <h1>Genres:</h1>
-            <a th:href="@{/edit_genre(id=0)}" href="edit_genre.html"><button class = "button btn_add">Add</button></a>
+            <a th:href="@{/edit_genre/{id}(id = 0)}" href="edit_genre.html"><button class = "button btn_add">Add</button></a>
             <table class="genre">
                 <thead>
                 <tr>
@@ -165,8 +165,8 @@
                     <td th:text="${genre.id}"/>
                     <td th:text="${genre.name}"/>
                     <td>
-                        <a th:href="@{/edit_genre(id=${genre.id})}" href="edit_genre.html"><button class = "button btn_edit">Edit</button></a>
-                        <button class = "button btn_delete" th:with="url = @{/delete_genre(id=${genre.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
+                        <a th:href="@{/edit_genre/{id}(id = ${genre.id})}" href="edit_genre.html"><button class = "button btn_edit">Edit</button></a>
+                        <button class = "button btn_delete" th:with="url = @{/delete_genre/{id}(id = ${genre.id})}" th:onclick="sendDelete([[${url}]])">Delete</button>
                     </td>
                 </tr>
                 </tbody>

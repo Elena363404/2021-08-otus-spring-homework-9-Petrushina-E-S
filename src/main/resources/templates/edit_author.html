@@ -26,7 +26,7 @@
 
 <!-- Author edition -->
 
-<form id="edit-form" th:action="@{/edit_author(id=${author.id})}" th:method="post" action="edit_author.html">
+<form id="edit-form" th:action="@{/edit_author/{id}(id = ${author.id})}" th:method="post" action="edit_author.html">
     <h1>Author Info:</h1>
 
     <div class="row" th:if="${author.id} ne 0">
